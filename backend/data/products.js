@@ -1,0 +1,108 @@
+const products = [
+  {
+    name: 'Premium Leather Notebook',
+    image: '/uploads/notebook-leather.jpg',
+    description:
+      'A premium leather-bound notebook with high-quality paper. Perfect for journaling, sketching, or taking notes. Features 240 pages of acid-free paper that works well with most pen types.',
+    brand: 'Moleskine',
+    category: 'notebooks',
+    price: 24.99,
+    countInStock: 15,
+    rating: 4.8,
+    numReviews: 12,
+    featured: true,
+  },
+  {
+    name: 'Ergonomic Desk Organizer',
+    image: '/uploads/desk-organizer.jpg',
+    description:
+      'Keep your workspace tidy with this modern desk organizer. Features compartments for pens, sticky notes, paper clips, and more. Made from sustainable bamboo material.',
+    brand: 'SimpleDesk',
+    category: 'desk-accessories',
+    price: 19.99,
+    countInStock: 25,
+    rating: 4.5,
+    numReviews: 8,
+    featured: true,
+  },
+  {
+    name: 'Fountain Pen Set',
+    image: '/uploads/fountain-pen.jpg',
+    description:
+      'Elegant fountain pen set with three interchangeable nibs and six ink cartridges. The weighted metal body provides perfect balance while writing. Comes in a gift box.',
+    brand: 'Parker',
+    category: 'pens',
+    price: 39.99,
+    countInStock: 10,
+    rating: 4.9,
+    numReviews: 15,
+    featured: true,
+  },
+  {
+    name: 'Wireless Charging Desk Lamp',
+    image: '/uploads/desk-lamp.jpg',
+    description:
+      'Modern LED desk lamp with adjustable brightness and color temperature. Features a built-in wireless charging pad for your smartphone. USB port for additional charging options.',
+    brand: 'TechLight',
+    category: 'electronics',
+    price: 49.99,
+    countInStock: 8,
+    rating: 4.7,
+    numReviews: 9,
+    featured: true,
+  },
+  {
+    name: 'Recycled Paper Sticky Notes',
+    image: '/uploads/sticky-notes.jpg',
+    description:
+      'Eco-friendly sticky notes made from 100% recycled paper. Pack includes 6 pads with 100 notes each in assorted colors. Strong adhesive that won\'t damage surfaces.',
+    brand: 'EcoNote',
+    category: 'paper-products',
+    price: 9.99,
+    countInStock: 30,
+    rating: 4.3,
+    numReviews: 5,
+    featured: false,
+  },
+  {
+    name: 'Mechanical Pencil Set',
+    image: '/uploads/mechanical-pencils.jpg',
+    description:
+      'Set of 5 premium mechanical pencils with 0.5mm lead. Includes 2 containers of replacement lead and 5 erasers. Metal body with comfortable grip.',
+    brand: 'Pentel',
+    category: 'pens',
+    price: 14.99,
+    countInStock: 20,
+    rating: 4.6,
+    numReviews: 7,
+    featured: false,
+  },
+  {
+    name: 'Adjustable Monitor Stand',
+    image: '/uploads/monitor-stand.jpg',
+    description:
+      'Ergonomic monitor stand with adjustable height to reduce neck strain. Features storage drawer and side compartments for office supplies. Supports monitors up to 30 inches.',
+    brand: 'ErgoMax',
+    category: 'desk-accessories',
+    price: 29.99,
+    countInStock: 12,
+    rating: 4.4,
+    numReviews: 6,
+    featured: false,
+  },
+  {
+    name: 'Wireless Noise-Cancelling Headphones',
+    image: '/uploads/headphones.jpg',
+    description:
+      'Premium noise-cancelling headphones for a distraction-free work environment. Features 30-hour battery life, comfortable ear cushions, and crystal-clear sound quality.',
+    brand: 'SoundPro',
+    category: 'electronics',
+    price: 129.99,
+    countInStock: 5,
+    rating: 4.8,
+    numReviews: 11,
+    featured: false,
+  },
+];
+
+module.exports = products; 
