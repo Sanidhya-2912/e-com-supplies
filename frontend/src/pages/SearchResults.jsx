@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Search, Mic, Filter, X } from 'lucide-react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import useVoiceSearch from '../lib/hooks/useVoiceSearch';
 
 // Sample product data (replace with API calls in real app)
 const dummyProducts = [
@@ -12,21 +12,22 @@ const dummyProducts = [
 
 const SearchResults = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialQuery = searchParams.get('q') || '';
+  const initialQuery = searchParams.get('q')  ||'';
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const { transcript, listening, browserSupportsSpeechRecognition, resetTranscript } = useSpeechRecognition();
-
-  // Voice search: update search query when transcript changes
-  useEffect(() => {
-    if (transcript && transcript.trim() !== '') {
-      setSearchQuery(transcript.trim());
-    }
-  }, [transcript]);
+  const { 
+    isListening, 
+    transcript, 
+    browserSupportsSpeechRecognition, 
+    resetTranscript,
+    toggleListening
+  } = useVoiceSearch({
+    onResult: (text) => setSearchQuery(text)
+  });
 
   // Fetch products based on query
   useEffect(() => {
@@ -55,12 +56,7 @@ const SearchResults = () => {
       alert('Your browser does not support voice search.');
       return;
     }
-    if (listening) {
-      SpeechRecognition.stopListening();
-    } else {
-      resetTranscript();
-      SpeechRecognition.startListening({ continuous: false, language: 'en-IN' });
-    }
+    toggleListening();
   };
 
   return (
@@ -87,9 +83,9 @@ const SearchResults = () => {
               <button
                 type="button"
                 onClick={handleVoiceSearch}
-                className={`p-1 rounded-full ${listening ? 'bg-primary text-white' : 'hover:bg-accent'}`}
+                className={`p-1 rounded-full ${isListening ? 'bg-primary text-white' : 'hover:bg-accent'}`}
               >
-                <Mic size={18} className={listening ? 'animate-pulse' : ''} />
+                <Mic size={18} className={isListening ? 'animate-pulse' : ''} />
               </button>
               <button type="submit" className="p-1 rounded-full hover:bg-accent">
                 <Search size={18} className="text-muted-foreground" />
@@ -99,17 +95,17 @@ const SearchResults = () => {
           <button
             type="button"
             onClick={() => setFiltersOpen(!filtersOpen)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-accent"
+            className={`px-4 py-3 rounded-lg border border-border ${
+              filtersOpen ? 'bg-accent' : 'bg-background'
+            }`}
           >
             <Filter size={18} />
-            Filters
           </button>
         </div>
-
-        {listening && <p className="text-sm text-primary mt-2 animate-pulse">Listening... speak your query</p>}
       </form>
 
       {/* Filter Panel */}
+
       {filtersOpen && (
         <div className="bg-background border border-border rounded-lg p-4 mb-6">
           <h2 className="font-medium mb-4">Filter Panel (To be implemented)</h2>

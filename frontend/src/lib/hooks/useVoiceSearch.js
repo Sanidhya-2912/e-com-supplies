@@ -1,7 +1,22 @@
 // src/lib/hooks/useVoiceSearch.js
 
 import { useEffect, useState } from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import mockSpeechRecognition, { mockUseSpeechRecognition } from './mockSpeechRecognition';
+
+// Try to import real speech recognition, fall back to mock if it fails
+let SpeechRecognition, useSpeechRecognition;
+try {
+  // Try to dynamically import the real speech recognition
+  const realSpeechModule = require('react-speech-recognition');
+  SpeechRecognition = realSpeechModule.default;
+  useSpeechRecognition = realSpeechModule.useSpeechRecognition;
+  console.log('Using real speech recognition');
+} catch (error) {
+  // Fall back to mock implementation
+  console.warn('Failed to load react-speech-recognition, using mock implementation', error);
+  SpeechRecognition = mockSpeechRecognition.SpeechRecognition;
+  useSpeechRecognition = mockSpeechRecognition.useSpeechRecognition;
+}
 
 const useVoiceSearch = ({ onResult } = {}) => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -43,6 +58,9 @@ const useVoiceSearch = ({ onResult } = {}) => {
     SpeechRecognition.startListening({
       continuous: true, // For short phrases. Set true if you want continuous.
       language: 'en-IN',
+    }).catch(error => {
+      console.error('Error starting speech recognition:', error);
+      setErrorMessage('Failed to start speech recognition. Please try again.');
     });
   };
 

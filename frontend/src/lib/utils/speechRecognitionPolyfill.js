@@ -7,8 +7,8 @@
 
 // Check if the Speech Recognition API is supported in the browser
 const isSpeechRecognitionSupported = () => {
-  return 'SpeechRecognition' in window || 
-         'webkitSpeechRecognition' in window || 
+  return 'SpeechRecognition' in window  
+         'webkitSpeechRecognition' in window  
          'mozSpeechRecognition' in window || 
          'msSpeechRecognition' in window;
 };
@@ -75,4 +75,4 @@ export const applySpeechRecognitionPolyfill = () => {
   }
 };
 
-export default applySpeechRecognitionPolyfill; 
+export default applySpeechRecognitionPolyfill;
