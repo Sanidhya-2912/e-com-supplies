@@ -7,8 +7,18 @@ import useVoiceSearch from '../lib/hooks/useVoiceSearch';
 const dummyProducts = [
   { id: '1', name: 'Premium Notebook', category: 'notebooks', price: 12.99, description: 'Hardcover notebook' },
   { id: '2', name: 'Gel Pens (Pack of 10)', category: 'pens', price: 9.99, description: 'Smooth writing pens' },
-  // Add more products here...
+  { id: '3', name: 'Graphite Pencils (Set of 12)', category: 'pencils', price: 6.99, description: 'Ideal for sketching and writing' },
+  { id: '4', name: 'Mechanical Pencils (Pack of 5)', category: 'pencils', price: 8.49, description: 'Refillable pencils with erasers' },
+  { id: '5', name: 'Desk Organizer', category: 'desk accessories', price: 15.99, description: 'Multi-compartment desk organizer' },
+  { id: '6', name: 'Metal Paper Clips (Box of 100)', category: 'desk accessories', price: 4.99, description: 'Durable metal clips for organizing papers' },
+  { id: '7', name: 'Adjustable Desk Lamp', category: 'electronics', price: 29.99, description: 'LED lamp with brightness settings' },
+  { id: '8', name: 'Wireless Mouse', category: 'electronics', price: 19.99, description: 'Ergonomic mouse with long battery life' },
+  { id: '9', name: 'USB Flash Drive 64GB', category: 'electronics', price: 14.99, description: 'High-speed data storage device' },
+  { id: '10', name: 'Sticky Notes (Pack of 5 colors)', category: 'desk accessories', price: 5.99, description: 'Colorful sticky notes for reminders' },
+  { id: '11', name: 'Ballpoint Pens (Pack of 10)', category: 'pens', price: 7.99, description: 'Smooth ink flow, reliable for daily use' },
+  { id: '12', name: 'Leather-bound Planner', category: 'notebooks', price: 24.99, description: 'Stylish planner for meetings and schedules' },
 ];
+
 
 const SearchResults = () => {
   const [searchParams, setSearchParams] = useSearchParams();
